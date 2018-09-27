@@ -1,19 +1,22 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Weather from './Components/Weather'
+import React from "react";
+import { createStackNavigator } from 'react-navigation';
+import ZipCodeScreen from "./Components/ZipCodeScreen";
+import WeatherScreen from "./Components/WeatherScreen";
+
+const RootStack = createStackNavigator({
+    Weather: WeatherScreen,
+    ZipCode: ZipCodeScreen
+}, {
+        initialRouteName: 'Weather',
+        initialRouteParams: { zipCode: '90110' }
+    })
 export default class App extends React.Component {
- render() {
- return (
-<Weather zipCode="90110"/>
- );
- }
+    render() {
+        return (
+
+            <RootStack />
+
+        );
+    }
 }
-const styles = StyleSheet.create({
- container: {
- flex: 1,
- backgroundColor: '#fff',
- alignItems: 'center',
- justifyContent: 'center',
- },
-});
 
